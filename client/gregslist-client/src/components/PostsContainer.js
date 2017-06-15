@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PostsList from './PostsList'
 import PostForm from './PostForm'
+import {Route, Link, Switch} from 'react-router-dom'
 
 export default class PostsContainer extends Component {
   constructor(){
@@ -45,7 +46,7 @@ export default class PostsContainer extends Component {
     return(
       <div>
       <PostsList posts={this.state.posts} />
-      <PostForm createPost={this.createPost} />
+      <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
       </div>
 
 
