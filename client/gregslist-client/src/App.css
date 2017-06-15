@@ -18,6 +18,27 @@
   font-size: large;
 }
 
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-row > [class*="col-"]{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row img {
+  min-width: 0;
+  width: 100%;
+}
+
+.img-thumbnail {
+  height: 250px;
+
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
