@@ -36,7 +36,7 @@ export default class PostForm extends Component {
           <input type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange}/>
           <input type="text" placeholder="Image URL" name="img_url" value={this.state.img_url} onChange={this.handleChange}/>
           <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange}/>
-          <input type="text" placeholder="Value" name="value" value={this.state.value} onChange={this.handleChange}/>
+          <input type="range" min="0" max="500" placeholder="Value" name="value" value={this.state.value} onChange={this.handleChange}/>
           <input type="submit" />
         </form>
       </div>
