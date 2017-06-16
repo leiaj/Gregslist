@@ -14,7 +14,8 @@ export default function PostView(props){
               <img id="pic-show" src={props.post.img_url}/>
             </div>
             <div className="back face center">
-              <Link className='btn-primary' to={`/posts/${props.post.id}/edit`} >MAKASKDMASD</Link>
+              <Link className='btn btn-primary' to={`/posts/${props.post.id}/edit`} >Edit</Link>
+              <button onClick={() => props.deletePost(props.post) } className="btn btn-danger">Delete This Post</button>
             </div>
           </div>
         </div>
