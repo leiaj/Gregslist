@@ -46,7 +46,7 @@ export default class PostsContainer extends Component {
 
   render(){
     return(
-      <div>
+      <div className="container">
       <PostsList posts={this.state.posts} />
       <Switch>
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
