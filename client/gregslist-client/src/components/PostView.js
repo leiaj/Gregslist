@@ -7,8 +7,19 @@ export default function PostView(props){
   return(
     <div id="pic-view" className='row'>
       <div className='col-md-5'>
-        <img id="pic-show" src={props.post.img_url}/>
+        <div id="f1_container">
+          <div id="f1_card" class="shadow">
+            <div class="front face">
+              <img id="pic-show" src={props.post.img_url}/>
+            </div>
+            <div class="back face center">
+              <h3>{props.post.email}</h3>
+            </div>
+          </div>
+        </div>
       </div>
+
+
       <div className='col-md-1'>
       </div>
 
