@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function PostView(props){
   if (!props.post){
@@ -7,8 +8,19 @@ export default function PostView(props){
   return(
     <div id="pic-view" className='row'>
       <div className='col-md-5'>
-        <img id="pic-show" src={props.post.img_url}/>
+        <div id="f1_container">
+          <div id="f1_card" className="shadow">
+            <div className="front face">
+              <img id="pic-show" src={props.post.img_url}/>
+            </div>
+            <div className="back face center">
+              <Link className='btn-primary' to={`/posts/${props.post.id}/edit`} >MAKASKDMASD</Link>
+            </div>
+          </div>
+        </div>
       </div>
+
+
       <div className='col-md-1'>
       </div>
 

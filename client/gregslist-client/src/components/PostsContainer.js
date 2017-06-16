@@ -13,6 +13,7 @@ export default class PostsContainer extends Component {
     }
     this.fetchPosts = this.fetchPosts.bind(this)
     this.createPost = this.createPost.bind(this)
+    this.updatePost = this.updatePost.bind(this)
   }
 
   fetchPosts(){
@@ -40,6 +41,39 @@ export default class PostsContainer extends Component {
       }))
     }
 
+    updatePost(post, routerProps){
+      fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
+        method: 'PATCH',
+        headers: {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        body: JSON.stringify({
+          post: post
+        })
+      })
+      .then(res => res.json())
+      .then( (resPost) => {
+        this.setState( (prevState) =>{
+          return (
+            {  posts: prevState.posts.map( p => {
+                  if (p.id !== resPost.id){
+                    return p
+                  } else {
+                    return resPost
+                  }
+                }
+              )
+            }
+          )
+        }
+      )
+    }
+  )
+
+    .then(() => routerProps.history.push(`/posts/${post.id}`))
+    }
+
   componentDidMount(){
     this.fetchPosts()
   }
@@ -50,6 +84,21 @@ export default class PostsContainer extends Component {
       <PostsList posts={this.state.posts} />
       <Switch>
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
+        <Route exact path='/posts/:id/edit' render={(routerProps) => {
+          const id = routerProps.match.params.id
+          const post = this.state.posts.find(p => p.id === parseInt(id))
+          if (!post){
+            return null
+          } else {
+            return (<div>
+                      <PostForm updatePost={this.updatePost} routerProps={routerProps} post={post} />
+                      <PostView post={post}/>
+                    </div>
+            )
+          }
+
+          }
+        }/>
         <Route exact path='/posts/:id' render={(routerProps) => {
           const id = routerProps.match.params.id
           const post = this.state.posts.find(p => p.id === parseInt(id))
