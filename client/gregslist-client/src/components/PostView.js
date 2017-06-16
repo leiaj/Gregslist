@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function PostView(props){
   if (!props.post){
@@ -13,7 +14,7 @@ export default function PostView(props){
               <img id="pic-show" src={props.post.img_url}/>
             </div>
             <div className="back face center">
-              <h3>{props.post.email}</h3>
+              <Link className='btn-primary' to={`/posts/${props.post.id}/edit`} >MAKASKDMASD</Link>
             </div>
           </div>
         </div>
