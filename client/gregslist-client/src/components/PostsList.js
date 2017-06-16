@@ -15,7 +15,7 @@ export default function PostsList(props){
         <div className='col-md-5'>
         </div>
           <div id="button-row" className='col-md-2'>
-            <Link className="btn btn-primary" to='/posts/new'>New Post</Link>
+            <Link className="btn btn-primary btn-sm" to='/posts/new'>New Post</Link>
           </div>
           <div className='col-md-5'>
         </div>

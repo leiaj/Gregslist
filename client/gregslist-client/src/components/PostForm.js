@@ -35,6 +35,7 @@ export default class PostForm extends Component {
       })
   }
 
+
   componentDidMount(){
     if (!!this.props.post){
       this.setState({
@@ -46,7 +47,6 @@ export default class PostForm extends Component {
       })
     }
   }
-
 
   render(){
     return(
