@@ -5,17 +5,26 @@ import PostView from './PostView'
 import CraigScraper from './CraigScraper'
 import {Route, Switch} from 'react-router-dom'
 
+const craigslist = require('node-craigslist');
+const client = new craigslist.Client({
+  city : 'NYC'
+});
+
+
 
 export default class PostsContainer extends Component {
   constructor(){
     super()
     this.state = {
-      posts: []
+      posts: [],
+      clPosts: ''
     }
     this.fetchPosts = this.fetchPosts.bind(this)
     this.createPost = this.createPost.bind(this)
     this.updatePost = this.updatePost.bind(this)
     this.deletePost = this.deletePost.bind(this)
+    this.searchCraigsList = this.searchCraigsList.bind(this)
+
   }
 
   fetchPosts(){
@@ -97,6 +106,28 @@ export default class PostsContainer extends Component {
     }))
     }
 
+    searchCraigsList(searchTerm) {
+      client
+        .search(searchTerm)
+        .then( (listings) => {
+          listings.forEach( (listing) => {
+            client.details(listing)
+            .then( res => JSON.stringify(res))
+            .then( (response) => this.setState( (prevState) => {
+                return {
+                    clPosts: [...prevState.clPosts, response]
+                      }
+                    }
+                  )
+                )
+            .then(console.log)
+            }
+          )
+        }
+      )
+    }
+
+
   componentDidMount(){
     this.fetchPosts()
   }
@@ -104,7 +135,7 @@ export default class PostsContainer extends Component {
   render(){
     return(
       <div className="container">
-      <PostsList posts={this.state.posts} />
+      <PostsList posts={this.state.posts} search={this.searchCraigsList} />
       <Switch>
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
         <Route exact path='/posts/:id/edit' render={(routerProps) => {
