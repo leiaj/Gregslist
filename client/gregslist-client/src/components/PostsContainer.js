@@ -3,7 +3,7 @@ import PostsList from './PostsList'
 import PostForm from './PostForm'
 import PostView from './PostView'
 import CraigScraper from './CraigScraper'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Link} from 'react-router-dom'
 
 const craigslist = require('node-craigslist');
 const client = new craigslist.Client({
@@ -140,7 +140,7 @@ export default class PostsContainer extends Component {
 
         newPost = {title: newPost.title,
            description: newPost.description.slice("40"),
-           img_url: newPost.images[0] || "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png",
+           img_url: newPost.images[0] !== undefined ? newPost.images[0] : "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png",
            email: newPost.url,
            value: 25
          }
@@ -159,6 +159,7 @@ export default class PostsContainer extends Component {
   render(){
     return(
       <div className="container">
+      <Link to={'/posts'}><h1>Gregslist</h1></Link>
       <PostsList posts={this.state.posts} search={this.searchCraigsList} makePosts={this.clPostsToPosts} />
       <Switch>
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
@@ -184,7 +185,7 @@ export default class PostsContainer extends Component {
         }
        } />
       </Switch>
-      <CraigScraper />
+
       </div>
 
 

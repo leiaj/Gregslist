@@ -7,7 +7,7 @@ import PostsContainer from './components/PostsContainer'
 class App extends Component {
   render() {
     return (
-      <div><PostsContainer /></div>
+      <div id='main-container'><PostsContainer /></div>
     );
   }
 }

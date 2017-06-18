@@ -10,6 +10,7 @@ export default class PostsList extends Component{
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    // this.filterProps = this.filterProps.bind(this)
   }
 
   handleChange(e){
@@ -22,32 +23,45 @@ export default class PostsList extends Component{
     e.preventDefault()
     this.props.search(this.state.searchTerm)
   }
+  //
+  // fitlerProps(e){
+  //   this.setState({
+  //     searchTerm: e.target.value
+  //   })
+  // }
 
 
   render(){
     return(
       <div>
           <div className='flex-row row'>
-              <div className='row'>
+              <div id='post-list-gallery' className='row'>
                 {this.props.posts.map(post => <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>)}
               </div>
           </div>
 
         <div className='row'>
-          <div className='col-md-2'>
+          <div className='col-md-1'>
           </div>
 
-          <div className='col-md-3'>
+          <div id="cl-search" className='col-md-4'>
             <form onSubmit={this.handleSubmit}>
-              <input type='text' placeholder="Search Gregslist!" onKeyUp={this.handleChange}/>
+              <input id="search-input" type='text' placeholder="Search Craigslist!" onKeyUp={this.handleChange}/>
               <input className='btn btn-primary' type='submit' />
             </form>
           </div>
 
-            <div id="button-row" className='col-md-2'>
+            <div id="button-row" className='col-md-1'>
               <Link className="btn btn-primary" to='/posts/new'>New Post</Link>
             </div>
-            <div className='col-md-5'>
+
+            <div className="col-md-1">
+            </div>
+
+            <div id="gl-search" className='col-md-4'>
+
+              <input id='gregslist-input' type='text' placeholder="Search Gregslist!" />
+
           </div>
         </div>
       </div>
