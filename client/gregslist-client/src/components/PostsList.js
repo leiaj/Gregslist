@@ -29,7 +29,7 @@ export default class PostsList extends Component{
       <div>
           <div className='flex-row row'>
               <div className='row'>
-                {this.props.posts.map(post => <div key={post.id} className='col-sm-2'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>)}
+                {this.props.posts.map(post => <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>)}
               </div>
           </div>
 

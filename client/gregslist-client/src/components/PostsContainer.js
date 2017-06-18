@@ -24,6 +24,7 @@ export default class PostsContainer extends Component {
     this.updatePost = this.updatePost.bind(this)
     this.deletePost = this.deletePost.bind(this)
     this.searchCraigsList = this.searchCraigsList.bind(this)
+    this.clPostsToPosts = this.clPostsToPosts.bind(this)
 
   }
 
@@ -34,22 +35,24 @@ export default class PostsContainer extends Component {
   }
 
     createPost(post){
-      fetch('http://localhost:3000/api/v1/posts', {
-        method: 'POST',
-        headers: {
-          "content-type": "application/json",
-          "accept": "application/json"
-        },
-        body: JSON.stringify({
-          post: post
+      if (!this.state.posts.includes(post)){
+        fetch('http://localhost:3000/api/v1/posts', {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            "accept": "application/json"
+          },
+          body: JSON.stringify({
+            post: post
+          })
         })
-      })
-      .then(res => res.json())
-      .then(post => this.setState((prevState) => {
-        return {
-          posts: [...prevState.posts, post]
-        }
-      }))
+        .then(res => res.json())
+        .then(post => this.setState((prevState) => {
+          return {
+            posts: [...prevState.posts, post]
+          }
+        }))
+      }
     }
 
     updatePost(post, routerProps){
@@ -120,11 +123,30 @@ export default class PostsContainer extends Component {
                     }
                   )
                 )
+            .then(() => this.clPostsToPosts() )
+            // .then((newPost) => this.createPost(newPost) )
             .then(console.log)
             }
           )
         }
       )
+
+    }
+
+    clPostsToPosts(){
+        let titleCheck = this.state.posts.map( post => post.title)
+        let newPost = this.state.clPosts[this.state.clPosts.length - 1]
+        newPost =  JSON.parse(newPost)
+
+        newPost = {title: newPost.title,
+           description: newPost.description.slice("40"),
+           img_url: newPost.images[0] || "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png",
+           email: newPost.url,
+           value: 25
+         }
+        if (!titleCheck.includes(newPost.title)){
+          this.createPost(newPost)
+        }
     }
 
 
@@ -132,10 +154,12 @@ export default class PostsContainer extends Component {
     this.fetchPosts()
   }
 
+
+
   render(){
     return(
       <div className="container">
-      <PostsList posts={this.state.posts} search={this.searchCraigsList} />
+      <PostsList posts={this.state.posts} search={this.searchCraigsList} makePosts={this.clPostsToPosts} />
       <Switch>
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
         <Route exact path='/posts/:id/edit' render={(routerProps) => {
