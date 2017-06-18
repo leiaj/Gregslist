@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PostsList from './PostsList'
 import PostForm from './PostForm'
 import PostView from './PostView'
-import {Route, Link, Switch} from 'react-router-dom'
+import CraigScraper from './CraigScraper'
+import {Route, Switch} from 'react-router-dom'
 
 
 export default class PostsContainer extends Component {
@@ -108,7 +109,7 @@ export default class PostsContainer extends Component {
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
         <Route exact path='/posts/:id/edit' render={(routerProps) => {
           const id = routerProps.match.params.id
-          const post = this.state.posts.find(p => p.id === parseInt(id))
+          const post = this.state.posts.find(p => p.id === parseInt(id, 10))
           if (!post){
             return null
           } else {
@@ -123,11 +124,12 @@ export default class PostsContainer extends Component {
         }/>
         <Route exact path='/posts/:id' render={(routerProps) => {
           const id = routerProps.match.params.id
-          const post = this.state.posts.find(p => p.id === parseInt(id))
+          const post = this.state.posts.find(p => p.id === parseInt(id, 10))
           return <PostView post={post} deletePost={this.deletePost} />
         }
        } />
       </Switch>
+      <CraigScraper />
       </div>
 
 

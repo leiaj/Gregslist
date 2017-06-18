@@ -1,14 +1,12 @@
 import React from 'react'
-import { Route, Switch, Link } from 'react-router-dom'
-import CraigScraper from './CraigScraper'
-
+import { Link } from 'react-router-dom'
 
 export default function PostsList(props){
   return(
     <div>
         <div className='flex-row row'>
             <div className='row'>
-              {props.posts.map(post => <div className='col-sm-2'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url}/></Link></div>)}
+              {props.posts.map(post => <div key={post.id} className='col-sm-2'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>)}
             </div>
         </div>
 
