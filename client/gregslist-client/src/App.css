@@ -19,9 +19,9 @@
   max-height: 200px;*/
   object-fit: cover;
  width: auto;
- max-width: 230px;
- height:200px;
- padding-right: 35px;
+ max-width: 100px;
+ height:100px;
+ padding-right: 1px;
 }
 
 #button-row{
