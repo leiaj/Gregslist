@@ -25,19 +25,13 @@ html{
   display: flex;
   flex-wrap: wrap;
 }
-/*
-.flex-row > [class*="col-"]{
-  display: flex;
-  flex-direction: column;
-}*/
 
 .flex-row img {
-  /*min-width: 0;*/
-  /*width: auto;
-  max-height: 200px;*/
+  display: flex;
   object-fit: cover;
- width: 100px;;
+ width: 100px;
  max-width: 100px;
+ max-height: 100%;
  height:100px;
  padding-right: 1px;
 }
@@ -75,6 +69,7 @@ html{
 }
 
 #post-list-gallery{
+  display: flex;
   height: 450px;
   width: 100%;
   overflow: auto;

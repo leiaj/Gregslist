@@ -10,7 +10,7 @@ export default class PostsList extends Component{
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    // this.filterProps = this.filterProps.bind(this)
+    this.filterProps = this.filterProps.bind(this)
   }
 
   handleChange(e){
@@ -21,14 +21,16 @@ export default class PostsList extends Component{
 
   handleSubmit(e){
     e.preventDefault()
+    console.log('searching...')
     this.props.search(this.state.searchTerm)
   }
-  //
-  // fitlerProps(e){
-  //   this.setState({
-  //     searchTerm: e.target.value
-  //   })
-  // }
+
+  filterProps(e){
+    this.setState({
+      searchTerm: e.target.value
+    })
+    // debugger
+  }
 
 
   render(){
@@ -36,7 +38,16 @@ export default class PostsList extends Component{
       <div>
           <div className='flex-row row'>
               <div id='post-list-gallery' className='row'>
-                {this.props.posts.map(post => <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>)}
+                {this.props.posts.map(post => {
+                  if (post.title.toLowerCase().includes(this.state.searchTerm)){
+                    return(
+                        <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>
+                      )
+                    }
+                  }
+                )
+                }
+
               </div>
           </div>
 
@@ -60,7 +71,7 @@ export default class PostsList extends Component{
 
             <div id="gl-search" className='col-md-4'>
 
-              <input id='gregslist-input' type='text' placeholder="Search Gregslist!" />
+              <input id='gregslist-input' type='text' placeholder="Search Gregslist!" onKeyUp={this.filterProps} />
 
           </div>
         </div>

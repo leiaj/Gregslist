@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PostsList from './PostsList'
 import PostForm from './PostForm'
 import PostView from './PostView'
-import CraigScraper from './CraigScraper'
 import {Route, Switch, Link} from 'react-router-dom'
 
 const craigslist = require('node-craigslist');
@@ -58,9 +57,11 @@ export default class PostsContainer extends Component {
     updatePost(post, routerProps){
       fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
         method: 'PATCH',
+        mode: 'cors',
         headers: {
           "content-type": "application/json",
-          "accept": "application/json"
+          "accept": "application/json",
+          "Access-Control-Allow-Origin": '*',
         },
         body: JSON.stringify({
           post: post
