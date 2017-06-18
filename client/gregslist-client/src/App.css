@@ -2,6 +2,24 @@
   text-align: center;
 }
 
+#root{
+  height: 100%;
+  background: #b3dced; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+html{
+  height: 100%;
+  background: #b3dced; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
 
 .flex-row {
   display: flex;
@@ -18,7 +36,7 @@
   /*width: auto;
   max-height: 200px;*/
   object-fit: cover;
- width: auto;
+ width: 100px;;
  max-width: 100px;
  height:100px;
  padding-right: 1px;
@@ -27,14 +45,41 @@
 #button-row{
   padding-top: 20px;
 }
+#cl-search{
+  padding-top: 20px;
+  margin-right: 20px;
+}
+
+#gl-search{
+  padding-top: 20px;
+  margin-left: 20px;
+}
+
+
+#gregs-list-input{
+    margin-left: 20px;
+}
+
 
 #pic-view{
   padding-top: 20px;
-  padding-bottom: 25px;
 }
+
+#search-input{
+ margin-right: 20px;
+}
+
 
 #pic-show{
   max-width: 525px;
+}
+
+#post-list-gallery{
+  height: 450px;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  background-color: #eea3bd;
 }
 
   /*style below is for card flipping*/
@@ -42,7 +87,7 @@
   position: relative;
   margin: 10px auto;
   width: 450px;
-  height: 281px;
+  height: 280px;
   z-index: 1;
 }
 #f1_container {

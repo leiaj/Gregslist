@@ -28,7 +28,7 @@ export default function PostView(props){
       <div className='col-md-6'>
         <h1>{props.post.title}</h1>
         <p>{props.post.description}</p>
-        <p>{props.post.email}</p>
+        <a href={props.post.email}><p>{props.post.email}</p></a>
         <p>${props.post.value}</p>
       </div>
     </div>
