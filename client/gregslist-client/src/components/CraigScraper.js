@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 const craigslist = require('node-craigslist');
+const responses = []
 
-// let client = new craigslist.Client({
-//   baseHost : 'craigslist.ca',
-//   city : 'Toronto'
-// });
 
+
+const client = new craigslist.Client({
+  city : 'NYC'
+});
 
 export default class CraigScraper extends Component {
   constructor(){
@@ -16,46 +17,47 @@ export default class CraigScraper extends Component {
     this.getLists = this.getLists.bind(this)
   }
 
-  // getLists(){
-  //   var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-  //       targetUrl = 'https://toronto.craigslist.ca/search/sss?sort=rel&query=xbox%20one'
-  //
-  //   fetch(proxyUrl + targetUrl, {
-  //     //  headers: {
-  //     //    "content-type": "application/json",
-  //     //    "accept": "application/json"
-  //     //  },
-  //   })
-  //   .then(res => res.text())
-  //   .then(res => JSON.stringify(res))
-  //   .then(res => JSON.parse(res))
-  //   .then(lists => this.setState({lists: lists}))
-  // }
 
-getLists(){
-var craigslist = require("node-craigslist")
+  getLists() {
+    client
+      .search("drums")
+      .then( (listings) => {
+        listings.forEach( (listing) => {
+          client.details(listing)
+          .then( (response) => this.setState( (prevState) => {
+              return {
+                  lists: [...prevState.lists, response]
+                    }
+                  }
+                )
+                )
+          .then(console.log)
+              }
+            )
+        }
+      )
+    }
 
-let client = new craigslist.Client({
-  baseHost : 'craigslist.ca',
-  city : 'Toronto'
-});
+        // client
+  //   .search("drums")
+  //   .then((listings) => {
+  //     listings.forEach( (listing) => (client.details(listing))
+  //     .then((response) => this.setState((prevState) => {
+  //       return
+  //         lists: [...prevState, response]
+  //     })
+  //   )
+  //   )}
+  //   .catch((err) => {
+  //     console.error(err);
+  //   });
 
-debugger
 
-client
-  .list()
-  .then((listings) => client.details(listings[0]))
-  .then((details) => {
-    console.log(details);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-}
 
-  // componentDidMount(){
-  //   this.getLists()
-  // }
+
+  componentDidMount(){
+    this.getLists()
+  }
 
   render(){
     return(
