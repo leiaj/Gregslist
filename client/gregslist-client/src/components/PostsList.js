@@ -5,7 +5,8 @@ export default class PostsList extends Component{
   constructor(props){
     super(props)
     this.state = {
-      searchTerm: ''
+      searchTerm: '',
+      filterTerm: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -23,11 +24,12 @@ export default class PostsList extends Component{
     e.preventDefault()
     console.log('searching...')
     this.props.search(this.state.searchTerm)
+    e.target.reset()
   }
 
   filterProps(e){
     this.setState({
-      searchTerm: e.target.value
+      filterTerm: e.target.value
     })
     // debugger
   }
@@ -39,7 +41,7 @@ export default class PostsList extends Component{
           <div className='flex-row row'>
               <div id='post-list-gallery' className='row'>
                 {this.props.posts.map(post => {
-                  if (post.title.toLowerCase().includes(this.state.searchTerm)){
+                  if (post.title.toLowerCase().includes(this.state.filterTerm) || post.description.toLowerCase().includes(this.state.filterTerm) ){
                     return(
                         <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>
                       )
@@ -71,7 +73,7 @@ export default class PostsList extends Component{
 
             <div id="gl-search" className='col-md-4'>
 
-              <input id='gregslist-input' type='text' placeholder="Search Gregslist!" onKeyUp={this.filterProps} />
+              <input id='gregslist-input' type='text' placeholder="Filter Gregslist!" onKeyUp={this.filterProps} />
 
           </div>
         </div>
