@@ -2,6 +2,19 @@
   text-align: center;
 }
 
+#main-head{
+  letter-spacing: 8px;
+}
+
+#sub-title{
+  padding-top: 7px;
+  height: 40px;
+  vertical-align: middle;
+  text-align: right;
+  color: white;
+  letter-spacing: 5px;
+}
+
 #root{
   height: 100%;
   background: #b3dced; /* Old browsers */
@@ -34,6 +47,7 @@ html{
  max-height: 100%;
  height:100px;
  padding-right: 1px;
+ margin-left: -15px;
 }
 
 #button-row{
@@ -63,13 +77,17 @@ html{
 
 #pic-show{
   display: flex;
+  height: 300px;
+  max-height: 250px;
   max-width: 525px;
+  padding-bottom: 30px;
 }
 
 #post-list-gallery{
   display: flex;
   height: 380px;
   width: 100%;
+  /*padding-left: -20px;*/
   overflow: auto;
   overflow-x: hidden;
   background-color: #eea3bd;
