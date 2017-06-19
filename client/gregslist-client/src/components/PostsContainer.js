@@ -56,12 +56,12 @@ export default class PostsContainer extends Component {
 
     updatePost(post, routerProps){
       fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: {
           "content-type": "application/json",
           "accept": "application/json",
-          "Access-Control-Allow-Origin": '*',
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH"
+          "Access-Control-Allow-Origin": 'http://localhost:3000/, http://localhost:3001/',
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS"
         },
         body: JSON.stringify({
           post: post
@@ -70,6 +70,7 @@ export default class PostsContainer extends Component {
       .then(res => res.json())
       .then( (resPost) => {
         this.setState( (prevState) =>{
+
           return (
             {  posts: prevState.posts.map( p => {
                   if (p.id !== resPost.id){
