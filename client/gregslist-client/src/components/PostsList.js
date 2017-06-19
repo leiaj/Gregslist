@@ -36,6 +36,7 @@ export default class PostsList extends Component{
 
 
   render(){
+
     return(
       <div>
           <div className='flex-row row'>
@@ -75,7 +76,7 @@ export default class PostsList extends Component{
             </div>
 
             <div id="gl-search" className='col-md-4'>
-              <input id='gregslist-input' type='text' placeholder="Filter Gregslist!" onKeyUp={this.filterProps} />
+              <input id='gregslist-input' type='text' placeholder="Filter Gregslist Posts!" onKeyUp={this.filterProps} />
           </div>
 
         </div>
