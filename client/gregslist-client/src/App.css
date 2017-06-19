@@ -2,33 +2,16 @@
   text-align: center;
 }
 
-#root{
-  height: 100%;
-  background: #b3dced; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-html{
-  height: 100%;
-  background: #b3dced; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
 
 .flex-row {
   display: flex;
   flex-wrap: wrap;
 }
 
+
 .flex-row img {
-  display: flex;
-  object-fit: cover;
+ display: flex;
+ object-fit: cover;
  width: 100px;
  max-width: 100px;
  max-height: 100%;
@@ -36,9 +19,34 @@ html{
  padding-right: 1px;
 }
 
+
+#root{
+  border-color: #b3dced; /* Old browsers */;
+  background-color: #b3dced;
+  border-style: solid;
+  border-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  padding-bottom: 20px;
+}
+
+.form-style{
+    border-style: solid;
+    border-color: grey;
+    margin: auto;
+    width: 50%;
+    padding: 30px;
+    text-align: center;
+}
+
+
+
 #button-row{
   padding-top: 20px;
+  padding-bottom: 20px;
 }
+
 #cl-search{
   padding-top: 20px;
   margin-right: 20px;
@@ -64,6 +72,7 @@ html{
 #pic-show{
   display: flex;
   max-width: 525px;
+  max-height: 250px;
 }
 
 #post-list-gallery{

@@ -170,8 +170,8 @@ export default class PostsContainer extends Component {
           if (!post){
             return null
           } else {
-            return (<div>
-                      <PostForm updatePost={this.updatePost} routerProps={routerProps} post={post} />
+            return (<div><p>
+                      <PostForm updatePost={this.updatePost} routerProps={routerProps} post={post} /></p>
                       <PostView post={post}/>
                     </div>
             )
