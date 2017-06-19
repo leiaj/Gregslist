@@ -55,12 +55,24 @@ export default class PostForm extends Component {
         <Route exact path='/posts/new' render={() => {
           return(
             <form onSubmit={this.handleSubmit}>
+            <div className='form-style'>
+            <p><h3>Create a New Post</h3></p>
+            <p>
               <input type="text" placeholder="Title" name="title" value={this.state.title} onChange={this.handleChange} />
+
               <input type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange}/>
+            </p>
+            <p>
               <input type="text" placeholder="Image URL" name="img_url" value={this.state.img_url} onChange={this.handleChange}/>
+
               <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange}/>
-              <input type="range" min="0" max="500" placeholder="Value" name="value" value={this.state.value} onChange={this.handleChange}/>
-              <input type="submit" />
+            </p>
+            <p>
+              $<input type="number" min="0.00" max="500.00" step="0.01" placeholder="Value" name="value" value={this.state.value} onChange={this.handleChange}/>
+            </p>
+
+              <input type="submit" id="submit-button"/>
+              </div>
             </form>
           )
         }} />
@@ -69,10 +81,12 @@ export default class PostForm extends Component {
             <form onSubmit={this.handleUpdate}>
               <input type="text" placeholder="Title" name="title" value={this.state.title} onChange={this.handleChange} />
               <input type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange}/>
+              <p>
               <input type="text" placeholder="Image URL" name="img_url" value={this.state.img_url} onChange={this.handleChange}/>
               <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange}/>
-              <input type="range" min="0" max="500" placeholder="Value" name="value" value={this.state.value} onChange={this.handleChange}/>
-              <input type="submit" />
+              </p>
+              <input type="number" min="0.00" max="500.00" step="0.0`" placeholder="Value" name="value" value={this.state.value} onChange={this.handleChange}/>
+              <input type="submit"/>
             </form>
           )
         }}/>

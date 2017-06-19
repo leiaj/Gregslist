@@ -34,14 +34,16 @@ html{
 }
 
 
+
 .flex-row {
   display: flex;
   flex-wrap: wrap;
 }
 
+
 .flex-row img {
-  display: flex;
-  object-fit: cover;
+ display: flex;
+ object-fit: cover;
  width: 100px;
  max-width: 100px;
  max-height: 100%;
@@ -50,9 +52,34 @@ html{
  margin-left: -15px;
 }
 
+
+/* #root{
+  border-color: #b3dced; /* Old browsers */;
+  background-color: #b3dced;
+  border-style: solid;
+  border-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  padding-bottom: 20px;
+}
+ */
+.form-style{
+    border-style: solid;
+    border-color: grey;
+    margin: auto;
+    width: 50%;
+    padding: 30px;
+    text-align: center;
+}
+
+
+
 #button-row{
   padding-top: 20px;
+  padding-bottom: 20px;
 }
+
 #cl-search{
   padding-top: 20px;
   margin-right: 20px;
@@ -80,6 +107,7 @@ html{
   height: 300px;
   max-height: 250px;
   max-width: 525px;
+  max-height: 250px;
   padding-bottom: 30px;
 }
 
