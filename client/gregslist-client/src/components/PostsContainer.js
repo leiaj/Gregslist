@@ -119,6 +119,7 @@ export default class PostsContainer extends Component {
             client.details(listing)
             .then( res => JSON.stringify(res))
             .then( (response) => this.setState( (prevState) => {
+              // debugger
                 return {
                     clPosts: [...prevState.clPosts, response]
                       }
@@ -132,6 +133,7 @@ export default class PostsContainer extends Component {
           )
         }
       )
+      .catch(() => prompt("Please copy the following link and install the Allow-Control-Origin Chrome Extension", "https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"))
     }
 
     clPostsToPosts(){
@@ -141,7 +143,7 @@ export default class PostsContainer extends Component {
 
         newPost = {title: newPost.title,
            description: newPost.description.slice("40"),
-           img_url: newPost.images !== 'undefined' ? newPost.images[0] : "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png",
+           img_url: newPost.images === null ? "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png" : newPost.images[0] ,
            email: newPost.url,
            value: 25
          }
@@ -156,11 +158,21 @@ export default class PostsContainer extends Component {
   }
 
 
-
   render(){
     return(
       <div className="container">
-      <Link to={'/posts'}><h1>Gregslist</h1></Link>
+        <div className="row">
+            <div className="col-lg-3">
+              <Link id="main-head" to={'/posts'}><h1 className="animated fadeInLeftBig">Gregslist</h1></Link>
+            </div>
+            <div className="col-lg-1">
+            </div>
+
+            <div id="sub-title" className="col-lg-8">
+              <p id="sub-title">A Modern Wrapper for a <a href="https://www.craigslist.com"> Classic Site </a> </p>
+            </div>
+
+        </div>
       <PostsList posts={this.state.posts} search={this.searchCraigsList} makePosts={this.clPostsToPosts} />
       <Switch>
         <Route exact path='/posts/new' render={() => <PostForm createPost={this.createPost} /> } />
