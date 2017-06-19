@@ -55,7 +55,6 @@ export default class PostsContainer extends Component {
     }
 
     updatePost(post, routerProps){
-      debugger
       fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
         method: 'PATCH',
         headers: {
