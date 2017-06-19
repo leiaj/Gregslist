@@ -49,11 +49,9 @@ html{
   margin-left: 20px;
 }
 
-
 #gregs-list-input{
     margin-left: 20px;
 }
-
 
 #pic-view{
   padding-top: 20px;
@@ -63,14 +61,14 @@ html{
  margin-right: 20px;
 }
 
-
 #pic-show{
+  display: flex;
   max-width: 525px;
 }
 
 #post-list-gallery{
   display: flex;
-  height: 450px;
+  height: 380px;
   width: 100%;
   overflow: auto;
   overflow-x: hidden;
@@ -79,6 +77,7 @@ html{
 
   /*style below is for card flipping*/
 #f1_container {
+  display: flex;
   position: relative;
   margin: 10px auto;
   width: 450px;
