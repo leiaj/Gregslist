@@ -8,13 +8,13 @@ export default class PostsList extends Component{
       searchTerm: '',
       filterTerm: ''
     }
-
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.filterProps = this.filterProps.bind(this)
   }
 
   handleChange(e){
+    e.preventDefault()
     this.setState({
       searchTerm: e.target.value
     })
@@ -43,9 +43,11 @@ export default class PostsList extends Component{
               {/* filter function below is being called everytime an iamge in gallery is click, sometimes causing errors */}
                 {this.props.posts.map(post => {
                   if (post.title.toLowerCase().includes(this.state.filterTerm) || post.description.toLowerCase().includes(this.state.filterTerm) ){
-                    return(
-                        <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>
-                      )
+                      if (post.id !== null){
+                        return(
+                            <div key={post.id} className='col-sm-1'><Link to={`/posts/${post.id}`}><img className='img' src={post.img_url} alt={post.title}/></Link></div>
+                          )
+                      }
                     }
                   }
                 )
