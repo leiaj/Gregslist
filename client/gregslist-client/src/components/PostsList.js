@@ -40,6 +40,7 @@ export default class PostsList extends Component{
       <div>
           <div className='flex-row row'>
               <div id='post-list-gallery' className='row'>
+              {/* filter function below is being called everytime an iamge in gallery is click, sometimes causing errors */}
                 {this.props.posts.map(post => {
                   if (post.title.toLowerCase().includes(this.state.filterTerm) || post.description.toLowerCase().includes(this.state.filterTerm) ){
                     return(
@@ -48,7 +49,7 @@ export default class PostsList extends Component{
                     }
                   }
                 )
-                }
+              }
 
               </div>
           </div>
@@ -72,10 +73,9 @@ export default class PostsList extends Component{
             </div>
 
             <div id="gl-search" className='col-md-4'>
-
               <input id='gregslist-input' type='text' placeholder="Filter Gregslist!" onKeyUp={this.filterProps} />
-
           </div>
+
         </div>
       </div>
     )

@@ -55,6 +55,7 @@ export default class PostsContainer extends Component {
     }
 
     updatePost(post, routerProps){
+      debugger
       fetch(`http://localhost:3000/api/v1/posts/${post.id}`, {
         method: 'PATCH',
         headers: {
@@ -111,6 +112,7 @@ export default class PostsContainer extends Component {
     }
 
     searchCraigsList(searchTerm) {
+      //synchronicity + duplicity issues in dis here request
       client
         .search(searchTerm)
         .then( (listings) => {
@@ -131,7 +133,6 @@ export default class PostsContainer extends Component {
           )
         }
       )
-
     }
 
     clPostsToPosts(){
@@ -141,7 +142,7 @@ export default class PostsContainer extends Component {
 
         newPost = {title: newPost.title,
            description: newPost.description.slice("40"),
-           img_url: newPost.images[0] !== undefined ? newPost.images[0] : "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png",
+           img_url: newPost.images !== 'undefined' ? newPost.images[0] : "https://www.123freevectors.com/wp-content/uploads/new/icon/075-smiley-face-vector-art-free-download-l.png",
            email: newPost.url,
            value: 25
          }
